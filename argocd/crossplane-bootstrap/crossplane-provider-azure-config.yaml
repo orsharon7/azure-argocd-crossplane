@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: upbound/provider-azure/config
-    repoURL: https://github.com/orsharon7/sample-app
+    repoURL: https://github.com/orsharon7/azure-argocd-crossplane
     targetRevision: HEAD
   destination:
     namespace: default

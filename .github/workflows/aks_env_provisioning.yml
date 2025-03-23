@@ -107,18 +107,18 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           az acr login --name "${{ env.acr_name }}"
-          docker build -t "${{ env.acr_name }}.azurecr.io/sample-app:v1" ./sample-app
-          docker push "${{ env.acr_name }}.azurecr.io/sample-app:v1"
+          docker build -t "${{ env.acr_name }}.azurecr.io/azure-argocd-crossplane:v1" ./azure-argocd-crossplane
+          docker push "${{ env.acr_name }}.azurecr.io/azure-argocd-crossplane:v1"
 
 
       # - name: Deploy Public Sample Application
       #   run: |
-      #     kubectl apply -f ./sample-app/deploy.yaml
+      #     kubectl apply -f ./azure-argocd-crossplane/deploy.yaml
       
       - name: Get Public Application URL
         id: get_app_url
         run: |
-          app_url=$(kubectl get svc public-sample-app-service --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+          app_url=$(kubectl get svc public-azure-argocd-crossplane-service --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
           if [ -n "$app_url" ]; then
             echo "app_url=$app_url" >> $GITHUB_ENV
             echo "webAppUrl=http://$app_url" >> $GITHUB_ENV
@@ -165,13 +165,13 @@ jobs:
           kubectl config set-context --current --namespace=argocd
           argocd login --core --insecure
           kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-          argocd app create sample-app --repo https://github.com/orsharon7/sample-app.git --path . --dest-server https://kubernetes.default.svc --dest-namespace default --sync-policy automated
-          argocd app sync sample-app
+          argocd app create azure-argocd-crossplane --repo https://github.com/orsharon7/azure-argocd-crossplane.git --path . --dest-server https://kubernetes.default.svc --dest-namespace default --sync-policy automated
+          argocd app sync azure-argocd-crossplane
          
-      - name: Get external IP of sample-app
+      - name: Get external IP of azure-argocd-crossplane
         id: get-external-ip
         run: |
-          EXTERNAL_IP=$(kubectl -n default get svc public-sample-app-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+          EXTERNAL_IP=$(kubectl -n default get svc public-azure-argocd-crossplane-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
           echo "::set-output name=external_ip::$EXTERNAL_IP"
 
       - name: Print external IP

@@ -14,7 +14,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/orsharon7/sample-app'
+    repoURL: 'https://github.com/orsharon7/azure-argocd-crossplane'
     targetRevision: HEAD
     path: infrastructure/azure
   destination:

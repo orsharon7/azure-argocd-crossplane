@@ -81,7 +81,7 @@ jobs:
                    "Environment=development"
 
   deploy_webapp:
-    uses: orsharon7/sample-app/.github/workflows/webapp_env_provisioning.yml@main
+    uses: orsharon7/azure-argocd-crossplane/.github/workflows/webapp_env_provisioning.yml@main
     needs: provision
     permissions:
       contents: write
@@ -101,7 +101,7 @@ jobs:
       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
   deploy_aks:
-    uses: orsharon7/sample-app/.github/workflows/aks_env_provisioning.yml@main
+    uses: orsharon7/azure-argocd-crossplane/.github/workflows/aks_env_provisioning.yml@main
     needs: provision
     permissions:
       issues: write
@@ -120,7 +120,7 @@ jobs:
       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
   deploy_dev_env:
-    uses: orsharon7/sample-app/.github/workflows/crossplane_dev_env.yml@main
+    uses: orsharon7/azure-argocd-crossplane/.github/workflows/crossplane_dev_env.yml@main
     needs: provision
     permissions:
       issues: write

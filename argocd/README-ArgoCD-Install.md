@@ -100,7 +100,7 @@ We also use the finalizer resources-finalizer.argocd.argoproj.io finalizer like 
 ### 9. Install crossplane's Azure provider ProviderConfig with ArgoCD
 
 To get our Provider finally working we also need to create a ProviderConfig accordingly that will tell the Provider where to find it's Azure credentials. 
-To let ArgoCD manage and deploy our ProviderConfig we again create a new ArgoCD Application CRD at [argocd/crossplane-bootstrap/crossplane-provider-azure-config.yaml](https://github.com/orsharon7/sample-app/blob/main/argocd/crossplane-bootstrap/crossplane-provider-azure-config.yaml):
+To let ArgoCD manage and deploy our ProviderConfig we again create a new ArgoCD Application CRD at [argocd/crossplane-bootstrap/crossplane-provider-azure-config.yaml](https://github.com/orsharon7/azure-argocd-crossplane/blob/main/argocd/crossplane-bootstrap/crossplane-provider-azure-config.yaml):
 
 ```sh
 kubectl apply -f argocd/crossplane-bootstrap/crossplane-provider-azure-config.yaml
