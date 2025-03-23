@@ -55,6 +55,18 @@ kubectl apply -k argocd/install
 This directory includes configuration for deploying Crossplane and its dependencies. We will dive into this in detail later in this guide.
 
 ---
+## Setup Github Secret
+Create AZURE_CREDENTIALS secrets to be used with Github Actions pipeline
+Secret example:
+```json
+{
+      "clientId": "CLIENT_ID",
+      "clientSecret": "CLIENT_SECRET",
+      "subscriptionId": "SUBSCRIPTION_ID",
+      "tenantId": "TENANT_ID"
+  }
+
+```
 
 ## AKS Management Cluster Setup - Deploy and Configure ArgoCD and Crossplane on AKS
 To create an AKS cluster, use the following command:
@@ -208,8 +220,8 @@ To support our strategy, the `argocd/crossplane-bootstrap` directory includes Ar
 
 Example deployment commands:
 ```bash
-kubectl apply -f argocd/config/xrd/dev-environment.yaml
-kubectl apply -f argocd/config/composition/dev-environment-composition.yaml
+kubectl apply -f argocd/config/xrd/crossplane-xrd-dev-env.yaml
+kubectl apply -f argocd/config/composition/crossplane-composition-dev-env.yaml
 ```
 
 Once both set up, This is how the YAML for provisioning a DevEnvironment will look like:
@@ -276,14 +288,15 @@ By using the **App of Apps** pattern, this repository provides a unified, scalab
 
 ## Deployment Workflow
 
-1. Install ArgoCD on the management cluster.
-2. Configure ArgoCD for GitOps:
+1. Create az credentials and set it up in Github Actions Secret
+2. Install ArgoCD on the management cluster.
+3. Configure ArgoCD for GitOps:
    - Create secrets for custom Helm repositories.
    - Deploy Crossplane and its components via ArgoCD applications.
-3. Leverage the App of Apps pattern for modular and reusable configurations.
-4. Utilize Crossplane to provision and manage Azure cloud resources declaratively.
-5. Implement XRDs and Compositions for custom resource definitions and mappings.
-6. Monitor and troubleshoot applications using ArgoCD's user interface.
+4. Leverage the App of Apps pattern for modular and reusable configurations.
+5. Utilize Crossplane to provision and manage Azure cloud resources declaratively.
+6. Implement XRDs and Compositions for custom resource definitions and mappings.
+7. Monitor and troubleshoot applications using ArgoCD's user interface.
 
 ---
 
