@@ -11,6 +11,7 @@ ArgoCD is employed as the GitOps tool to manage and deploy Kubernetes manifests 
 ![Architecture Diagram](media/architecture.png)
 > **Credit:**
 > This architecture was designed by [Arik Bidny](https://www.linkedin.com/in/arik-bidny).
+> All code written by [Or Sharon](https://www.linkedin.com/in/orsharon)
 
 ---
 
