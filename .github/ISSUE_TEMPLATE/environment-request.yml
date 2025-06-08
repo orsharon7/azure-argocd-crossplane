@@ -40,7 +40,7 @@ body:
     id: environment_type
     attributes:
       label: ">>environment_type<<"
-      description: "Choose the environemnt type for this development."
+      description: "Choose the environment type for this development."
       options:
         - dev_env
         - aks

@@ -137,9 +137,9 @@ kubectl apply -f argocd/crossplane-bootstrap.yaml
 ```
 
 
-### Deploy Developer Environemnt
+### Deploy Developer Environment
 ```sh
-kubectl apply -f infrastructure/dev-environemnt.yaml
+kubectl apply -f infrastructure/dev-environment.yaml
 ```
 
 
