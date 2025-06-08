@@ -34,7 +34,7 @@ The repository implements a multi-layered architecture, facilitating a clear sep
 4. **Cleanup**: Upon issue closure or PR deletion, ArgoCD and Crossplane automatically deprovision the resources, ensuring efficient resource management.
 
 This GitOps-driven workflow minimizes manual intervention, accelerates environment provisioning, and maintains infrastructure consistency.
-![Github Issue Imange](media/gh-issue.png)
+![Github Issue Image](media/gh-issue.png)
 
 ---
 ## Repository Structure
