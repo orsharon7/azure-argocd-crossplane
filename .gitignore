@@ -1,7 +1,7 @@
 argocd/azure-crendentials.yaml
 argocd/azure-credentials.json
 .DS_Store
-dev-environment*
+infrastructure/azure/dev-envs/dev-environment-*
 archive/
 archive/*
 media/USER_STORY.md
